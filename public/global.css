@@ -1,0 +1,187 @@
+:root {
+	--body-padding: 15px;
+}
+
+body {
+	background: no-repeat fixed center;
+	background-size: cover;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: #202b38;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.fa-carrot,
+.fa-check,
+.fa-angle-left {
+	font-size: 2.2em;
+}
+
+.fa-wrench,
+.fa-chart-pie {
+	font-size: 1.5em;
+}
+
+.center-full {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.pos-fixed {
+	position: fixed;
+}
+
+.tl {
+	top: var(--body-padding);
+	left: var(--body-padding);
+}
+
+.bl {
+	bottom: var(--body-padding);
+	left: var(--body-padding);
+}
+
+.container {
+	height: 100%;
+	width: 100%;
+	z-index: -1;
+}
+
+#time-date {
+	width: 100%;
+	padding-top: var(--body-padding);
+}
+
+#pomodoro-clock {
+	font-family: monospace;
+	font-size: 8rem;
+	font-weight: 700;
+	color: #fff;
+	text-shadow: 0 1px 5px rgba(0, 0, 0, .5);
+}
+
+#pomodoro-icons {
+	left: 0;
+	height: 100%;
+	padding-left: calc(var(--body-padding) * 2);
+}
+
+#pomodoro-icons ul {
+	margin: 0;
+	padding: 0;
+}
+
+#pomodoro-icons ul :not(:last-child) {
+	padding-bottom: 25px;
+}
+
+#pomodoro-icons ul :not(:last-child):after {
+	content: "";
+    position: absolute;
+    z-index: 10;
+    left: 65%;
+    height: 1.8em;
+    margin-top: 55%;
+    border-left: 3px dotted rgba(255, 255, 255, 0.8);
+}
+
+#project-panel {
+	right: 0;
+	height: 100%;
+}
+
+#project-panel #panel-open {
+	padding-right: var(--body-padding);
+}
+
+#project-panel ul {
+	display: none;
+}
+
+.weather-container {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 500;
+	font-size: 2.5rem;
+	color: #fff;
+	text-align: center;
+	text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+	background-color: rgba(39, 39, 39, 0.7);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	padding: 0.8rem;
+	border-radius: 10px;
+	z-index: 1;
+}
+
+
+.bookmark-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 60%;
+	margin: 1em 0em;
+}
+
+.bookmark-set {
+	padding: 1em;
+	background-color: rgba(19, 19, 19, 0.7);
+	border-radius: 6px;
+	font-family: "Roboto", sans-serif;
+	backdrop-filter: blur(10px);
+	font-size: 0.9rem;
+	width: 25%;
+	height: 10em;
+	margin: 0em .5em;
+}
+
+.bookmark-inner-container {
+	overflow-y: scroll;
+	height: 80%;
+	vertical-align: top;
+}
+
+.bookmark-title {
+	font-size: 1.3rem;
+	font-weight: 500;
+	color: #fff;
+	margin: 0em 0em .35em 0em;
+}
+
+.bookmark {
+	text-decoration: none;
+	color: #8c8c8b;
+	display: block;
+	margin: .5em 0em;
+}
+
+.bookmark:hover {
+	color: #fff;
+}
+
+/* Smartphone Portrait and Landscape */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {}
+
+@media only screen and (max-width: 960px) {
+	.container>.bookmark-container {
+		flex-direction: column;
+		width: 60%;
+	}
+
+	.bookmark-container>.bookmark-set {
+		width: auto;
+		margin: 1em 0em;
+	}
+}

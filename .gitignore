@@ -4,6 +4,7 @@
 .vscode
 node_modules
 *.map
+/public/build/
 /src/compiler/compile/internal_exports.ts
 /compiler.d.ts
 /compiler.*js
