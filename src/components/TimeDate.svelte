@@ -1,8 +1,9 @@
 <script>
     import { time } from "../stores.js";
+    import { padWithZeroes } from "../utils.js";
 
-    $: hours = $time.getHours();
-    $: minutes = $time.getMinutes();
+    $: hours = padWithZeroes($time.getHours());
+    $: minutes = padWithZeroes($time.getMinutes());
 
     let months = [
             "January",

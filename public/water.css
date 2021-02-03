@@ -663,13 +663,6 @@ select[multiple] {
     overflow-y: auto;
 }
 
-button,
-input[type='submit'],
-input[type='button'] {
-    padding-right: 30px;
-    padding-left: 30px;
-}
-
 button:hover {
     background: #ddd;
     background: var(--button-hover);

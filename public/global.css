@@ -22,16 +22,13 @@ ul {
 
 .fa-carrot,
 .fa-check,
-.fa-angle-left {
-	font-size: 2.2em;
-}
-
-.fa-carrot.active {
-	color: #FF6347;
+.fa-hourglass-half {
+	font-size: 2.4em;
 }
 
 .fa-wrench,
-.fa-chart-pie {
+.fa-chart-pie,
+.fa-angle-left {
 	font-size: 1.5em;
 }
 
@@ -46,6 +43,15 @@ ul {
 	position: fixed;
 }
 
+.pos-abs {
+	position: absolute;
+}
+
+.strikethrough {
+	text-decoration: line-through;
+	opacity: 0.6;
+}
+
 .tl {
 	top: var(--body-padding);
 	left: var(--body-padding);
@@ -57,9 +63,13 @@ ul {
 }
 
 .container {
-	height: 100%;
+	min-height: 100%;
 	width: 100%;
 	z-index: -1;
+}
+
+#pomodoro-timer {
+	margin-top: 3rem;
 }
 
 #time-date {
@@ -90,7 +100,7 @@ ul {
 #pomodoro-icons {
 	left: 0;
 	height: 100%;
-	padding-left: calc(var(--body-padding) * 2);
+	padding-left: calc(var(--body-padding) * 1.5);
 }
 
 #pomodoro-icons ul {
@@ -102,16 +112,6 @@ ul {
 	padding-bottom: 25px;
 }
 
-#pomodoro-icons ul :not(:last-child):after {
-	content: "";
-	position: absolute;
-	z-index: 10;
-	left: 65%;
-	height: 1.8em;
-	margin-top: 55%;
-	border-left: 3px dotted rgba(255, 255, 255, 0.8);
-}
-
 #project-panel {
 	right: 0;
 	height: 100%;
@@ -119,6 +119,21 @@ ul {
 
 #project-panel #panel-open {
 	padding-right: var(--body-padding);
+	border-bottom-left-radius: 4em;
+	border-top-left-radius: 4em;
+	height: 4em;
+	width: 1.5em;
+	background: #161f27;
+	font-size: 1.5em;
+	align-items: center;
+	position: fixed;
+	right: -15px;
+	transition: right 0.5s;
+	cursor: pointer;
+}
+
+#project-panel #panel-open:hover {
+	right: -5px;
 }
 
 #project-panel ul {
@@ -156,6 +171,13 @@ ul {
 	overflow-wrap: break-word;
 	flex-grow: 1;
 	cursor: pointer;
+	padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+input.todo-label {
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .todo-label.new {
@@ -170,9 +192,14 @@ ul {
 	height: 1.2em;
 }
 
-svg.todo-check {
-	height: 1.4em;
+.todo-check.new {
+	font-size: 1.4em;
 }
+
+.todo-btn {
+	width: 8%;
+}
+
 
 
 .weather-container {

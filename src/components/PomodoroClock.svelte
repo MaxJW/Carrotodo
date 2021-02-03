@@ -3,7 +3,10 @@
     import { time } from "../stores.js";
     import { padWithZeroes } from "../utils.js";
 
-    let timer = 25 * 60;
+    let taskTime = 25*60;
+    let shortBreak = 5*60;
+    let longBreak = 15*60;
+    let timer = taskTime;
     let elapsedTime = 0;
     let start = $time.getTime();
     let running = false;
