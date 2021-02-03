@@ -62,9 +62,21 @@ ul {
 	padding-top: var(--body-padding);
 }
 
-#pomodoro-clock {
-	font-family: monospace;
+#pomo-controls { 
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+}
+
+#pomo-controls button {
+	width: 100%;
+	margin: 0px 10px 10px 10px;
+}
+
+#pomo-clock {
+	font-family: 'JetBrains Mono', monospace;
 	font-size: 8rem;
+	line-height: 9rem;
 	font-weight: 700;
 	color: #fff;
 	text-shadow: 0 1px 5px rgba(0, 0, 0, .5);
