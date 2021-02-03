@@ -8,7 +8,8 @@ body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	background: #202b38;
+	//background: #202b38;
+	background-image: url(https://source.unsplash.com/1920x1080/?nature,water);
 	color: #dbdbdb;
 }
 
@@ -66,6 +67,7 @@ ul {
 	min-height: 100%;
 	width: 100%;
 	z-index: -1;
+	background-color: rgb(0 0 0 / 30%);
 }
 
 #pomodoro-timer {
@@ -75,6 +77,7 @@ ul {
 #time-date {
 	width: 100%;
 	padding-top: var(--body-padding);
+	z-index: -1;
 }
 
 #pomo-controls {
@@ -117,14 +120,16 @@ ul {
 	height: 100%;
 }
 
-#project-panel #panel-list {
+#panel-list {
 	background-color: #161f27;
 	position: fixed;
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	width: 200px;
+	width: 230px;
 	right: 0;
+	padding: 10px;
+	overflow-y: scroll;
 }
 
 #panel-open {
@@ -144,7 +149,7 @@ ul {
 }
 
 #panel-open.open {
-	right: 200px;
+	right: 235px;
 }
 
 #panel-open.open svg {
@@ -154,6 +159,7 @@ ul {
 #project-panel ul {
 	display: flex;
 	flex-direction: column;
+	padding-top: 30px;
 }
 
 #todo-list {
@@ -220,5 +226,4 @@ input.todo-label {
 /* Smartphone Portrait and Landscape */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {}
 
-@media only screen and (max-width: 960px) {
-}
+@media only screen and (max-width: 960px) {}

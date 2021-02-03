@@ -8,14 +8,14 @@
 	import TimeDate from "./components/TimeDate.svelte";
 	import ToDoList from "./components/ToDoList.svelte";
 
-	import { todos } from "./stores.js";
+	import { todos, projects } from "./stores.js";
 </script>
 
 <Settings />
 <ProgressIcons />
 <Graphs />
 
-<ProjectPanel />
+<ProjectPanel bind:projects={$projects} />
 <TimeDate />
 
 <div class="container center-full pos-abs">
