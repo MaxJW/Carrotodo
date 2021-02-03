@@ -9,6 +9,7 @@ body {
 	margin: 0;
 	padding: 0;
 	background: #202b38;
+	color: #dbdbdb;
 }
 
 ::-webkit-scrollbar {
@@ -23,6 +24,10 @@ ul {
 .fa-check,
 .fa-angle-left {
 	font-size: 2.2em;
+}
+
+.fa-carrot.active {
+	color: #FF6347;
 }
 
 .fa-wrench,
@@ -62,7 +67,7 @@ ul {
 	padding-top: var(--body-padding);
 }
 
-#pomo-controls { 
+#pomo-controls {
 	display: flex;
 	width: 100%;
 	flex-direction: row;
@@ -75,8 +80,8 @@ ul {
 
 #pomo-clock {
 	font-family: 'JetBrains Mono', monospace;
-	font-size: 8rem;
-	line-height: 9rem;
+	font-size: 10rem;
+	line-height: 11rem;
 	font-weight: 700;
 	color: #fff;
 	text-shadow: 0 1px 5px rgba(0, 0, 0, .5);
@@ -99,12 +104,12 @@ ul {
 
 #pomodoro-icons ul :not(:last-child):after {
 	content: "";
-    position: absolute;
-    z-index: 10;
-    left: 65%;
-    height: 1.8em;
-    margin-top: 55%;
-    border-left: 3px dotted rgba(255, 255, 255, 0.8);
+	position: absolute;
+	z-index: 10;
+	left: 65%;
+	height: 1.8em;
+	margin-top: 55%;
+	border-left: 3px dotted rgba(255, 255, 255, 0.8);
 }
 
 #project-panel {
@@ -119,6 +124,56 @@ ul {
 #project-panel ul {
 	display: none;
 }
+
+#todo-list {
+	padding: 1.4em;
+	background-color: #161f27;
+	border-radius: 6px;
+	font-family: sans-serif;
+	font-size: 0.9rem;
+	width: 420px;
+}
+
+.todo-item,
+.new-todo {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.todo-item:not(:last-child) {
+	margin-bottom: 0.7em;
+	padding-bottom: 0.7em;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.todo-label {
+	justify-content: flex-start;
+	align-items: center;
+	position: relative;
+	padding-left: 1em;
+	overflow-wrap: break-word;
+	flex-grow: 1;
+	cursor: pointer;
+}
+
+.todo-label.new {
+	opacity: 0.7;
+}
+
+.todo-check {
+	display: flex;
+	align-items: center;
+	min-width: 1em;
+	width: 5% !important;
+	height: 1.2em;
+}
+
+svg.todo-check {
+	height: 1.4em;
+}
+
 
 .weather-container {
 	position: absolute;

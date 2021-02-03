@@ -1,13 +1,17 @@
 <script>
+    import { onMount } from "svelte";
     import { time } from "../stores.js";
+    import { padWithZeroes } from "../utils.js";
 
-    const padWithZeroes = (number) => number.toString().padStart(2, "0");
-
-    let timer = (toWait = 25 * 60); // -1 to adjust for extra second
+    let timer = 25 * 60;
     let elapsedTime = 0;
     let start = $time.getTime();
     let running = false;
     let started = false;
+
+    onMount(() => {
+        toWait = timer;
+    });
 
     function pauseTimer() {
         elapsedTime = $time.getTime() - start + elapsedTime;

@@ -18,14 +18,22 @@
 <!-- ToDo List -->
 <div class="container center-full pos-fixed">
 	<PomodoroClock />
-	<div class="todo-list">
+	<div id="todo-list" class="center-full">
 		<div class="todo-item">
 			<input id="1" type="checkbox" class="todo-check" />
 			<label for="1" class="todo-label">This is a sample todo</label>
 		</div>
-		<div class="new-todo">
+		<div class="todo-item">
 			<input id="2" type="checkbox" class="todo-check" />
-			<label for="2" class="todo-label">Add new todo</label>
+			<label for="2" class="todo-label">And another one</label>
+		</div>
+		<div class="todo-item">
+			<input id="3" type="checkbox" class="todo-check" />
+			<label for="3" class="todo-label">Here is another todo</label>
+		</div>
+		<div class="new-todo">
+			<i class="fas fa-plus todo-check"></i>
+			<label for="2" class="todo-label new">Add new todo</label>
 		</div>
 	</div>
 </div>
