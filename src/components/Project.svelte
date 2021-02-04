@@ -42,12 +42,8 @@
 		<span class="missing">Project</span>
 	</slot>
 	{#if project.id && hovering}
-	<button
-		type="button"
-		class="project-del-btn"
-		on:click={onRemove}
-	>
-		<i class="fas fa-trash-alt" />
-	</button>
-{/if}
+		<button type="button" class="project-del-btn" on:click={onRemove}>
+			<i class="fas fa-trash-alt" />
+		</button>
+	{/if}
 </div>

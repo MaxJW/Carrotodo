@@ -25,7 +25,6 @@
     };
 
     function handleKeydown(e) {
-        console.log(e.key);
         if (e.key === "Escape") {
             onCancel();
         } else if (e.key === "Enter") {
@@ -47,17 +46,21 @@
         use:clickOutside
         on:click_outside={onCancel}
     >
-        <input
-            bind:value={name}
-            type="text"
-            id="newproj-name"
-            autoComplete="off"
-            placeholder="Create new project"
-        />
-        <input bind:value={design} type="color" id="newproj-design" />
-        <button type="submit" disabled={!name} class="center-full"
-            ><i class="fas fa-plus" /></button
-        >
+        <div>
+            <input
+                bind:value={name}
+                type="text"
+                id="newproj-name"
+                autoComplete="off"
+                placeholder="Create new project"
+            />
+            <div class="newproj-lower">
+                <input bind:value={design} type="color" id="newproj-design" />
+                <button type="submit" disabled={!name} class="center-full"
+                    ><i class="fas fa-plus" /></button
+                >
+            </div>
+        </div>
     </form>
 {:else}
     <Project bind:project={emptyProject} on:select={toggleEditing}>

@@ -6,34 +6,34 @@
 
     const dispatch = createEventDispatcher();
 
-    let editing = false; // track editing mode
+    let editing = false;
     let hovering = false;
     let editField;
-    let name = todo.name; // hold the name of the todo being edited
-    let editButtonPressed = false; // track if edit button has been pressed, to give focus to it after cancel or save
+    let name = todo.name;
+    let editButtonPressed = false;
 
     function update(updatedTodo) {
-        todo = { ...todo, ...updatedTodo }; // applies modifications to todo
-        dispatch("update", todo); // emit update event
+        todo = { ...todo, ...updatedTodo };
+        dispatch("update", todo);
     }
 
     function onCancel() {
-        name = todo.name; // restores name to its initial value and
-        editing = false; // and exit editing mode
+        name = todo.name;
+        editing = false;
     }
 
     function onSave() {
-        update({ name: name }); // updates todo name
-        editing = false; // and exit editing mode
+        update({ name: name });
+        editing = false;
     }
 
     function onRemove() {
-        dispatch("remove", todo); // emit remove event
+        dispatch("remove", todo);
     }
 
     function onEdit() {
-        editButtonPressed = true; // user pressed the Edit button, focus will come back to the Edit button
-        editing = true; // enter editing mode
+        editButtonPressed = true;
+        editing = true;
     }
 
     function highlightToDo(node) {
@@ -41,7 +41,7 @@
     }
 
     function onToggle() {
-        update({ completed: !todo.completed }); // updates todo status
+        update({ completed: !todo.completed });
     }
 
     function handleKeydown(e) {
@@ -61,7 +61,6 @@
 </script>
 
 {#if editing}
-    <!-- markup for editing todo: label, input text, Cancel and Save Button -->
     <form
         on:submit|preventDefault={onSave}
         class="todo-item"
@@ -107,8 +106,10 @@
             checked={todo.completed}
             class="todo-check"
         />
-        <label for="todo-{todo.id}" class="todo-label {todo.completed ? 'strikethrough' : ''}" on:click={onEdit}
-            >{todo.name}</label
+        <label
+            for="todo-{todo.id}"
+            class="todo-label {todo.completed ? 'strikethrough' : ''}"
+            on:click={onEdit}>{todo.name}</label
         >
         {#if hovering}
             <button type="button" class="todo-btn" on:click={onRemove}>

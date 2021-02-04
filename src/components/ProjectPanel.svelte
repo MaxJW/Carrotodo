@@ -71,7 +71,7 @@
 				x: 240,
 				opacity: 1,
 				duration: 400,
-				easing: sineOut
+				easing: sineOut,
 			}}
 		>
 			{#each projects as project (project.id)}

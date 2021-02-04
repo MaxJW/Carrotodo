@@ -4,17 +4,15 @@
     import { currProject } from "../stores.js";
     import { flip } from "svelte/animate";
     import { dndzone } from "svelte-dnd-action";
-    const flipDurationMs = 300;
-    function handleSort(e) {
-        todos = e.detail.items;
-    }
 
     export let todos = [];
 
     let currProj;
+
     const unsubscribe = currProject.subscribe((value) => {
         currProj = value;
     });
+    const flipDurationMs = 300;
 
     $: newTodoId = todos.length ? Math.max(...todos.map((t) => t.id)) + 1 : 1;
 
@@ -33,12 +31,22 @@
         const i = todos.findIndex((t) => t.id === todo.id);
         todos[i] = { ...todos[i], ...todo };
     }
+
+    function handleSort(e) {
+        todos = e.detail.items;
+    }
 </script>
 
 <div id="todo-list" class="center-full">
     <div
         id="todo-container"
-        use:dndzone={{ items: todos, dropTargetStyle: {'box-shadow': '0 0 0 2px #0096bfab', 'border-radius': '6px'}}}
+        use:dndzone={{
+            items: todos,
+            dropTargetStyle: {
+                "box-shadow": "0 0 0 2px #0096bfab",
+                "border-radius": "6px",
+            },
+        }}
         on:consider={handleSort}
         on:finalize={handleSort}
     >
