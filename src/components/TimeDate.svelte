@@ -37,7 +37,7 @@
         months[$time.getMonth()];
 </script>
 
-<div id="time-date" class="pos-fixed center-full pos-fixed">
+<div id="time-date" class="pos-fixed center-full pos-abs">
     <div id="date">{date}</div>
     <div id="time">{hours}:{minutes}</div>
 </div>

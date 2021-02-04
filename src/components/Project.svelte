@@ -1,27 +1,53 @@
 <script>
 	import { createEventDispatcher } from "svelte";
-	
+	import { currProject, projects } from "../stores";
+	import { fade } from "svelte/transition";
+
 	export let project;
 
 	const dispatch = createEventDispatcher();
 
 	function onSelect() {
-        dispatch("select", todo); // emit remove event
-    }
+		dispatch("select", project);
+	}
+
+	function onRemove() {
+		dispatch("remove", project);
+	}
+
+	let hovering = false;
+
+	function activeHover() {
+		hovering = true;
+	}
+	function inactiveHover() {
+		hovering = false;
+	}
+
+	let currProj;
+
+	const unsubscribe = currProject.subscribe((value) => {
+		currProj = value;
+	});
 </script>
 
-<div id="project-{project.id}" class="project center-full" style="--background-color: {project.design}">
+<div
+	class="project center-full {project.id == currProj ? 'active' : ''}"
+	style="--background-color: {project.design};"
+	on:click={onSelect}
+	on:mouseenter={activeHover}
+	on:mouseleave={inactiveHover}
+>
 	<slot name="name">
 		<span class="missing">Project</span>
 	</slot>
+	{#if project.id && hovering}
+	<button
+		type="button"
+		class="project-del-btn"
+		on:click={onRemove}
+	>
+		<i class="fas fa-trash-alt" />
+	</button>
+{/if}
 </div>
-
-<style>
-	.project {
-		background-color: var(--background-color);
-		border-radius: 15px;
-		min-height: 7em;
-		width: 100%;
-		margin-bottom: 10px
-	}
-</style>

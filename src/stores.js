@@ -15,7 +15,7 @@ const initialTodos = [
     { id: 3, name: 'Create a new project!', completed: true, project: 2 },
 ]
 const initialProjects = [
-    { id: 1, name: 'Quick Tasks', design: '#03abff' }
+    { id: 1, name: 'Quick Tasks', design: "#03abff" }
 ]
 
 export const currProject = writable(1);

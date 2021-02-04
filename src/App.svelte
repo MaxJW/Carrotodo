@@ -15,7 +15,7 @@
 <ProgressIcons />
 <Graphs />
 
-<ProjectPanel bind:projects={$projects} />
+<ProjectPanel bind:projects={$projects} bind:todos={$todos} />
 <TimeDate />
 
 <div class="container center-full pos-abs">
