@@ -7,8 +7,14 @@
 	import Settings from "./components/Settings.svelte";
 	import TimeDate from "./components/TimeDate.svelte";
 	import ToDoList from "./components/ToDoList.svelte";
-
+	import { tweened } from 'svelte/motion'
 	import { todos, projects } from "./stores.js";
+
+	let percentTimeRemaining = 200;
+	const progress = tweened(0, { duration: 1000 })
+	$: {
+        $progress = percentTimeRemaining;
+    }
 </script>
 
 <Settings />
@@ -18,7 +24,7 @@
 <ProjectPanel bind:projects={$projects} bind:todos={$todos} />
 <TimeDate />
 
-<div class="container center-full pos-abs">
-	<PomodoroClock />
+<div class="container center-full pos-abs" style="--percent-remaining: {$progress}%">
+	<PomodoroClock bind:percentTimeRemaining={percentTimeRemaining} />
 	<ToDoList bind:todos={$todos} />
 </div>
