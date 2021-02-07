@@ -1,6 +1,7 @@
-import { readable, writable } from "svelte/store";
+import { readable } from "svelte/store";
 import { localStore } from './localStore.js'
 
+//Keep track of current time
 export const time = readable(new Date(), set => {
     const interval = setInterval(() => {
         set(new Date());
@@ -9,6 +10,7 @@ export const time = readable(new Date(), set => {
     return () => clearInterval(interval);
 });
 
+//Store first launch values for ToDos, Projects, and Timers
 const initialTodos = [
     { id: 1, name: 'Visit Carrotodo', completed: true, project: 1 },
     { id: 2, name: 'Add a new task to your ToDo list', completed: false, project: 1 },
@@ -24,6 +26,7 @@ const initialTimers = [
 
 ]
 
+//Export all initial values to cookies (using localStore.js)
 export const currProject = localStore('pomodomore-currentproject', 1);
 export const todos = localStore('pomodomore-todos', initialTodos);
 export const projects = localStore('pomodomore-projects', initialProjects);

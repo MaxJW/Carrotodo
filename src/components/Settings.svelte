@@ -12,6 +12,9 @@
 		settingsOpen = false;
 	}
 
+	//Check settings have valid numbers entered (validated when leaving focus on an input field)
+	//Min value: 0.1 minutes (though if 0, defaults to 1 minute)
+	//Max value: 300 minutes (5 hours, possibly a bit excessive)
 	const validNum = (e, i) => {
 		if (e.target.value % 1 != 0) {
 			e.target.value = $timers[i].time =
@@ -68,6 +71,50 @@
 				</div>
 			{/each}
 		</form>
-		<!--Alarm volume-->
+		<!--Alarm volume - to implement-->
 	</div>
 {/if}
+
+<style>
+	#settings {
+		padding: var(--body-padding);
+		z-index: 3;
+	}
+
+	#settings-panel {
+		border-radius: 6px;
+		background-color: #161f27dd;
+		min-width: 40%;
+		margin: calc(var(--body-padding) * 3);
+		padding: var(--body-padding);
+		z-index: 5;
+	}
+
+	#settings-panel h1 {
+		margin-top: 0;
+	}
+
+	#settings-panel form {
+		display: flex;
+		flex-direction: row;
+	}
+
+	#settings-panel form input[type="color"] {
+		width: -webkit-fill-available;
+	}
+
+	.timer-setting-column {
+		display: flex;
+		flex-direction: column;
+		padding: 10px;
+	}
+
+	.timer-setting-column * {
+		margin: 5px;
+	}
+
+	.fa-wrench:hover,
+	#settings.active .fa-wrench {
+		background-color: #161f27ad;
+	}
+</style>

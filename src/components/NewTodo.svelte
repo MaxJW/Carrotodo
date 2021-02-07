@@ -1,10 +1,11 @@
 <script>
     import { createEventDispatcher } from "svelte";
 
-    const dispatch = createEventDispatcher();
+    const dispatch = createEventDispatcher(); //Dispatch events to ToDoList component
 
     let name = "";
 
+    //Add new ToDo if name is not blank
     const addTodo = () => {
         if (name) {
             dispatch("addTodo", name);
@@ -12,10 +13,12 @@
         }
     };
 
+    //Cancel adding new todo
     const onCancel = () => {
         name = "";
     };
 
+    //Submit on Enter, Cancel on Escape
     function handleKeydown(e) {
         if (e.key === "Escape") {
             onCancel();
@@ -42,3 +45,13 @@
         placeholder="Add new task"
     />
 </form>
+
+<style>
+    .todo-check.new {
+        font-size: 1.4em;
+    }
+
+    .todo-label.new {
+        opacity: 0.7;
+    }
+</style>

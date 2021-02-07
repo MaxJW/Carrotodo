@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 
+//Store data within cookies on system (found in stores.js)
 export const localStore = (key, initial) => {
     const toString = (value) => JSON.stringify(value, null, 2)
     const toObj = JSON.parse

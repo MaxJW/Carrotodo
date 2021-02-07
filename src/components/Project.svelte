@@ -1,11 +1,11 @@
 <script>
 	import { createEventDispatcher } from "svelte";
-	import { currProject, projects } from "../stores";
+	import { currProject } from "../stores";
 	import { fade } from "svelte/transition";
 
 	export let project;
 
-	const dispatch = createEventDispatcher();
+	const dispatch = createEventDispatcher(); //Dispatch events to the ProjectPanel component
 
 	function onSelect() {
 		dispatch("select", project);
@@ -42,3 +42,16 @@
 		</button>
 	{/if}
 </div>
+
+<style>
+	.project .project-del-btn {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		margin: 5px;
+	}
+
+	.project.active .project-del-btn {
+		margin: 2px;
+	}
+</style>

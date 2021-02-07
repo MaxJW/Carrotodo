@@ -3,11 +3,11 @@
     import Todo from "./Todo.svelte";
     import { currProject } from "../stores.js";
     import { flip } from "svelte/animate";
-    import { dndzone } from "svelte-dnd-action";
+    import { dndzone } from "svelte-dnd-action"; //Used to rearrange ToDos
 
     export let todos = [];
 
-    $: newTodoId = todos.length ? Math.max(...todos.map((t) => t.id)) + 1 : 1;
+    $: newTodoId = todos.length ? Math.max(...todos.map((t) => t.id)) + 1 : 1; //Generate new ToDo ID
 
     function addTodo(name) {
         todos = [
@@ -25,6 +25,7 @@
         todos[i] = { ...todos[i], ...todo };
     }
 
+    //Sort ToDos on reorder
     function handleSort(e) {
         todos = e.detail.items;
     }
@@ -53,3 +54,19 @@
     </div>
     <NewTodo on:addTodo={(e) => addTodo(e.detail)} />
 </div>
+
+<style>
+    #todo-list {
+        padding: 1.4em;
+        background-color: #161f27;
+        border-radius: 6px;
+        font-family: sans-serif;
+        font-size: 0.9rem;
+        width: 420px;
+    }
+
+    #todo-container {
+        width: 100%;
+        z-index: 4;
+    }
+</style>

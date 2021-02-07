@@ -3,13 +3,14 @@
     import { clickOutside } from "../utils.js";
     import Project from "./Project.svelte";
 
-    const dispatch = createEventDispatcher();
+    const dispatch = createEventDispatcher(); //Used to dispatch events to ProjectPanel component
 
     let name = "";
     let design = "#ff0000";
     let editing = false;
-    let emptyProject = { design: "#10171d" };
+    let emptyProject = { design: "#10171d" }; //Black background for new project panel
 
+    //Add a new project if both the name and colour have been chosen
     const addProject = () => {
         if (name && design) {
             if (name.length <= 25) {
@@ -20,12 +21,14 @@
         }
     };
 
+    //Reset name and design fields
     const onCancel = () => {
         editing = false;
         name = "";
         design = "";
     };
 
+    //Submit on Enter, cancel on Escape
     function handleKeydown(e) {
         if (e.key === "Escape") {
             onCancel();
@@ -70,3 +73,19 @@
         <span slot="name">New Project</span>
     </Project>
 {/if}
+
+<style>
+    .newproj-lower {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 5px;
+    }
+
+    .newproj-lower button {
+        width: 30%;
+    }
+
+    #newproj-design {
+        width: 50%;
+    }
+</style>

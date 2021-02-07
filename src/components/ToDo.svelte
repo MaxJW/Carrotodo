@@ -5,13 +5,11 @@
     import { fade } from "svelte/transition";
     import { currProject } from "../stores.js";
 
-    const dispatch = createEventDispatcher();
+    const dispatch = createEventDispatcher(); //Dispatch events to ToDoList
 
-    let editing = false;
-    let hovering = false;
-    let editField;
-    let name = todo.name;
-    let editButtonPressed = false;
+    let editing = false; //Track if editing current ToDo name
+    let hovering = false; //Check if hovering over current ToDo (show delete icon)
+    let name = todo.name; //Get name of current ToDo
 
     function update(updatedTodo) {
         todo = { ...todo, ...updatedTodo };
@@ -33,10 +31,10 @@
     }
 
     function onEdit() {
-        editButtonPressed = true;
         editing = true;
     }
 
+    //Select text within ToDo
     function highlightToDo(node) {
         node.select();
     }
@@ -53,9 +51,11 @@
         }
     }
 
+    //If hovering over ToDo
     function activeHover() {
         hovering = true;
     }
+    //No longer hovering over ToDo
     function inactiveHover() {
         hovering = false;
     }
@@ -80,7 +80,6 @@
         />
         <input
             bind:value={name}
-            bind:this={editField}
             use:highlightToDo
             use:clickOutside
             on:click_outside={onSave}
@@ -122,3 +121,19 @@
         {/if}
     </div>
 {/if}
+
+<style>
+    .invis {
+        display: none !important;
+    }
+
+    .todo-item {
+        margin-bottom: 0.7em;
+        padding-bottom: 0.7em;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .todo-btn {
+        width: 8%;
+    }
+</style>
