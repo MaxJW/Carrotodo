@@ -25,7 +25,6 @@ const initialTimers = [
 ]
 
 export const currProject = localStore('pomodomore-currentproject', 1);
-
 export const todos = localStore('pomodomore-todos', initialTodos);
 export const projects = localStore('pomodomore-projects', initialProjects);
 export const timers = localStore('pomodomore-timers', initialTimers);
