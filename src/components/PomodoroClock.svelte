@@ -11,7 +11,6 @@
     $: shortBreak = $timers[1].time * 60;
     $: longBreak = $timers[2].time * 60;
     $: {
-        console.log({taskTime}, {shortBreak}, {longBreak});
         updateTimer();
         toWait = timer;
     }
