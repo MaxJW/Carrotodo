@@ -9,7 +9,7 @@
 	import { tweened } from 'svelte/motion'
 	import { todos, projects } from "./stores.js";
 
-	let percentTimeRemaining = 200;
+	let percentTimeRemaining = 100;
 	const progress = tweened(0, { duration: 1000 })
 	$: $progress = percentTimeRemaining;
 

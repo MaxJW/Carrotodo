@@ -4,7 +4,7 @@
     import { padWithZeroes } from "../utils.js";
 
     export let percentTimeRemaining;
-    export let currDesign = $timers[0].design;
+    export let currDesign = "#202b38"; //Cheat to remove initial tweening of loading colour on page launch
 
     let currTask = 1;
     $: taskTime = $timers[0].time * 60;
@@ -82,7 +82,7 @@
         : toWait;
     $: minutes = Math.floor(toWait / 60);
     $: seconds = Math.floor(toWait % 60);
-    $: percentTimeRemaining = timer > 0 ? (toWait / timer) * 100 : 100;
+    $: percentTimeRemaining = timer > 0 ? (toWait / timer) * 100 : 0;
 </script>
 
 <div id="pomodoro-timer" class="center-full">
