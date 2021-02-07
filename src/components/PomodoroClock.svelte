@@ -4,16 +4,12 @@
     import { padWithZeroes } from "../utils.js";
 
     export let percentTimeRemaining;
-    export let currTimer
+    export let currTimer;
 
     let currTask = 1;
-    $: taskTime = $timers[0].time * 60;
-    $: shortBreak = $timers[1].time * 60;
-    $: longBreak = $timers[2].time * 60;
-    $: {
-        updateTimer();
-        toWait = timer;
-    }
+    let taskTime;
+    let shortBreak;
+    let longBreak;
     let timer = taskTime;
     let elapsedTime = 0;
     let start = $time.getTime();
@@ -21,11 +17,22 @@
     let started = false;
 
     onMount(() => {
+        taskTime = $timers[0].time * 60;
+        shortBreak = $timers[1].time * 60;
+        longBreak = $timers[2].time * 60;
         timer = toWait = taskTime;
         currTask = 1;
         currTimer = $timers[0];
         start = $time.getTime();
     });
+
+    $: {
+        taskTime = $timers[0].time * 60;
+        shortBreak = $timers[1].time * 60;
+        longBreak = $timers[2].time * 60;
+        updateTimer();
+        toWait = timer;
+    }
 
     function pauseTimer() {
         elapsedTime = $time.getTime() - start + elapsedTime;
@@ -46,10 +53,7 @@
     function startTimer() {
         start = $time.getTime();
         started = running = true;
-        currTimer =
-            currTask == 0
-                ? $timers[2]
-                : $timers[(currTask - 1) % 2];
+        currTimer = currTask == 0 ? $timers[2] : $timers[(currTask - 1) % 2];
     }
 
     function updateTimer() {

@@ -3,6 +3,7 @@
     import { createEventDispatcher } from "svelte";
     import { clickOutside } from "../utils.js";
     import { fade } from "svelte/transition";
+    import { currProject } from "../stores.js";
 
     const dispatch = createEventDispatcher();
 
@@ -64,6 +65,7 @@
     <form
         on:submit|preventDefault={onSave}
         class="todo-item"
+        class:invis={todo.project !== $currProject}
         on:keydown={handleKeydown}
         on:mouseenter={activeHover}
         on:mouseleave={inactiveHover}
@@ -96,6 +98,7 @@
 {:else}
     <div
         class="todo-item"
+        class:invis={todo.project !== $currProject}
         on:mouseenter={activeHover}
         on:mouseleave={inactiveHover}
     >
@@ -109,6 +112,7 @@
         <label
             for="todo-{todo.id}"
             class="todo-label {todo.completed ? 'strikethrough' : ''}"
+            class:strikethrough={todo.completed}
             on:click={onEdit}>{todo.name}</label
         >
         {#if hovering}

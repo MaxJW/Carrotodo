@@ -44,13 +44,11 @@
         on:finalize={handleSort}
     >
         {#each todos as todo (todo.id)}
-            {#if todo.project === $currProject}
-                <Todo
-                    {todo}
-                    on:update={(e) => updateTodo(e.detail)}
-                    on:remove={(e) => removeTodo(e.detail)}
-                />
-            {/if}
+            <Todo
+                {todo}
+                on:update={(e) => updateTodo(e.detail)}
+                on:remove={(e) => removeTodo(e.detail)}
+            />
         {/each}
     </div>
     <NewTodo on:addTodo={(e) => addTodo(e.detail)} />

@@ -26,7 +26,8 @@
 </script>
 
 <div
-	class="project center-full {project.id == $currProject ? 'active' : ''}"
+	class="project center-full"
+	class:active={project.id == $currProject}
 	style="--background-color: {project.design};"
 	on:click={onSelect}
 	on:mouseenter={activeHover}

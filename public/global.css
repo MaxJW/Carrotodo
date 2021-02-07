@@ -16,6 +16,10 @@ body {
 	display: none;
 }
 
+.invis {
+	display: none !important;
+}
+
 ul {
 	list-style-type: none;
 }

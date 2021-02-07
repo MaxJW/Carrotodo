@@ -3,29 +3,35 @@
 	import { clickOutside } from "../utils.js";
 
 	let settingsOpen = false;
-	
+
 	const onClick = () => {
 		settingsOpen = !settingsOpen;
 	};
 
-	const hideSettings = () => {
+	function hideSettings() {
 		settingsOpen = false;
 	}
 
 	const validNum = (e, i) => {
 		if (e.target.value % 1 != 0) {
-			e.target.value = $timers[i].time = Math.floor(e.target.value * 10) / 10;
+			e.target.value = $timers[i].time =
+				Math.floor(e.target.value * 10) / 10;
 		}
-		if (e.target.value < 1) {
+		if (e.target.value < 0) {
 			e.target.value = $timers[i].time = 1;
 		}
 		if (e.target.value > 300) {
 			e.target.value = $timers[i].time = 300;
 		}
-	}
+	};
 </script>
 
-<div id="settings" class="pos-fixed {settingsOpen ? 'active' : ''}" on:click={onClick}>
+<div
+	id="settings"
+	class="pos-fixed"
+	class:active={settingsOpen}
+	on:click={onClick}
+>
 	<i class="fas fa-wrench" />
 </div>
 
@@ -35,7 +41,7 @@
 		<form
 			id="settings-form"
 			class="center-full"
-			on:submit|preventDefault={hideSettings}
+			on:submit|preventDefault|nonpassive={hideSettings}
 			use:clickOutside
 			on:click_outside={hideSettings}
 		>
@@ -51,7 +57,7 @@
 						autoComplete="off"
 						placeholder="25"
 						min="1"
-						on:input={(e) => validNum(e, timer.id)}
+						on:blur={(e) => validNum(e, timer.id)}
 					/>
 					<input
 						bind:value={timer.design}

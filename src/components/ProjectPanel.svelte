@@ -58,7 +58,8 @@
 >
 	<div
 		id="panel-open"
-		class="center-full {showPanel ? 'open' : ''}"
+		class="center-full"
+		class:open={showPanel}
 		on:click={togglePanel}
 	>
 		<i class="fas fa-angle-left pos-abs" />

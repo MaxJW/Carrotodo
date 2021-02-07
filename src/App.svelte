@@ -23,6 +23,6 @@
 <TimeDate />
 
 <div class="container center-full pos-abs" style="--percent-remaining: {$progress}%; --current-timer-colour: {currTimer.design}cc;">
-	<PomodoroClock bind:percentTimeRemaining bind:currTimer />
+	<PomodoroClock bind:percentTimeRemaining={percentTimeRemaining} bind:currTimer={currTimer} />
 	<ToDoList bind:todos={$todos} />
 </div>
