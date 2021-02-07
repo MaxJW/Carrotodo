@@ -1,2 +1,2 @@
-# CaroToDo
-A Pomodoro (or Carota in this case) timer web app built using Svelte
+# Carrotodo
+A Pomodoro (or Carrot in this case 😂) timer web app built using Svelte
