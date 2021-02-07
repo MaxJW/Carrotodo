@@ -1,6 +1,5 @@
 <script>
 	import "normalize.css";
-	import Graphs from "./components/Graphs.svelte";
 	import PomodoroClock from "./components/PomodoroClock.svelte";
 	import ProgressIcons from "./components/ProgressIcons.svelte";
 	import ProjectPanel from "./components/ProjectPanel.svelte";
@@ -12,19 +11,18 @@
 
 	let percentTimeRemaining = 200;
 	const progress = tweened(0, { duration: 1000 })
-	$: {
-        $progress = percentTimeRemaining;
-    }
+	$: $progress = percentTimeRemaining;
+
+	let currDesign;
 </script>
 
 <Settings />
 <ProgressIcons />
-<Graphs />
 
 <ProjectPanel bind:projects={$projects} bind:todos={$todos} />
 <TimeDate />
 
-<div class="container center-full pos-abs" style="--percent-remaining: {$progress}%">
-	<PomodoroClock bind:percentTimeRemaining={percentTimeRemaining} />
+<div class="container center-full pos-abs" style="--percent-remaining: {$progress}%; --current-timer-colour: {currDesign}cc;">
+	<PomodoroClock bind:percentTimeRemaining={percentTimeRemaining} bind:currDesign={currDesign} />
 	<ToDoList bind:todos={$todos} />
 </div>

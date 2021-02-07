@@ -17,8 +17,15 @@ const initialTodos = [
 const initialProjects = [
     { id: 1, name: 'Quick Tasks', design: "#03abff" }
 ]
+const initialTimers = [
+    { id: 0, time: 25, design: "#ff542d", desc: "Activity" }, //Task time
+    { id: 1, time: 5, design: "#38d1ff", desc: "Short Break" }, //Short break
+    { id: 2, time: 15, design: "#00b730", desc: "Long Break" } //Long break
 
-export const currProject = writable(1);
+]
 
-export const todos = localStore('pomodomore-todos', initialTodos)
-export const projects = localStore('pomodomore-projects', initialProjects)
+export const currProject = localStore('pomodomore-currentproject', 1);
+
+export const todos = localStore('pomodomore-todos', initialTodos);
+export const projects = localStore('pomodomore-projects', initialProjects);
+export const timers = localStore('pomodomore-timers', initialTimers);

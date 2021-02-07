@@ -23,16 +23,10 @@
 	function inactiveHover() {
 		hovering = false;
 	}
-
-	let currProj;
-
-	const unsubscribe = currProject.subscribe((value) => {
-		currProj = value;
-	});
 </script>
 
 <div
-	class="project center-full {project.id == currProj ? 'active' : ''}"
+	class="project center-full {project.id == $currProject ? 'active' : ''}"
 	style="--background-color: {project.design};"
 	on:click={onSelect}
 	on:mouseenter={activeHover}

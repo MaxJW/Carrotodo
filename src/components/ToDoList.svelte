@@ -7,19 +7,12 @@
 
     export let todos = [];
 
-    let currProj;
-
-    const unsubscribe = currProject.subscribe((value) => {
-        currProj = value;
-    });
-    const flipDurationMs = 300;
-
     $: newTodoId = todos.length ? Math.max(...todos.map((t) => t.id)) + 1 : 1;
 
     function addTodo(name) {
         todos = [
             ...todos,
-            { id: newTodoId, name, completed: false, project: currProj },
+            { id: newTodoId, name, completed: false, project: $currProject },
         ];
     }
 
@@ -51,7 +44,7 @@
         on:finalize={handleSort}
     >
         {#each todos as todo (todo.id)}
-            {#if todo.project === currProj}
+            {#if todo.project === $currProject}
                 <Todo
                     {todo}
                     on:update={(e) => updateTodo(e.detail)}

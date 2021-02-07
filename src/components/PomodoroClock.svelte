@@ -1,15 +1,20 @@
 <script>
     import { onMount } from "svelte";
-    import { time } from "../stores.js";
+    import { time, timers } from "../stores.js";
     import { padWithZeroes } from "../utils.js";
-    import { tweened } from "svelte/motion";
 
     export let percentTimeRemaining;
+    export let currDesign = $timers[0].design;
 
     let currTask = 1;
-    let taskTime = 25 * 60; //25 mins
-    let shortBreak = 5 * 60; //5 mins
-    let longBreak = 15 * 60; //15 mins
+    $: taskTime = $timers[0].time * 60;
+    $: shortBreak = $timers[1].time * 60;
+    $: longBreak = $timers[2].time * 60;
+    $: {
+        console.log({taskTime})
+        updateTimer();
+        toWait = timer;
+    }
     let timer = taskTime;
     let elapsedTime = 0;
     let start = $time.getTime();
@@ -41,12 +46,13 @@
     function startTimer() {
         start = $time.getTime();
         started = running = true;
+        currDesign =
+            currTask == 0
+                ? $timers[2].design
+                : $timers[(currTask - 1) % 2].design;
     }
 
-    function proceedToNextTimer() {
-        currTask++;
-        console.log(currTask);
-        running = false;
+    function updateTimer() {
         if (currTask % 2 === 0) {
             if (currTask === 8) {
                 timer = longBreak;
@@ -57,6 +63,12 @@
         } else {
             timer = taskTime;
         }
+    }
+
+    function proceedToNextTimer() {
+        currTask++;
+        running = false;
+        updateTimer();
         return 0; //Keep toWait at zero until "Next" pressed
     }
 
@@ -70,7 +82,7 @@
         : toWait;
     $: minutes = Math.floor(toWait / 60);
     $: seconds = Math.floor(toWait % 60);
-    $: percentTimeRemaining = (toWait / timer) * 100;
+    $: percentTimeRemaining = timer > 0 ? (toWait / timer) * 100 : 100;
 </script>
 
 <div id="pomodoro-timer" class="center-full">

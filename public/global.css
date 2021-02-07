@@ -52,21 +52,49 @@ ul {
 	opacity: 0.6;
 }
 
-.tl {
+#settings {
 	top: var(--body-padding);
 	left: var(--body-padding);
+	z-index: 3;
 }
 
-.bl {
-	bottom: var(--body-padding);
-	left: var(--body-padding);
+#settings-panel {
+	border-radius: 6px;
+	background-color: #161f27ad;
+	min-width: 40%;
+	margin: calc(var(--body-padding)*2);
+	padding: var(--body-padding);
+	z-index: 5;
+}
+
+#settings-panel h1 {
+	margin-top: 0;
+}
+
+#settings-panel form {
+	display: flex;
+	flex-direction: row;
+}
+
+#settings-panel form input[type="color"] {
+	width: -webkit-fill-available;
+}
+
+.timer-setting-column {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+
+.timer-setting-column * {
+	margin: 5px;
 }
 
 .container {
 	min-height: 100%;
 	width: 100%;
 	z-index: -1;
-	background: linear-gradient(180deg, rgb(32 43 56 / 80%) var(--percent-remaining), rgb(45 255 109 / 80%) var(--percent-remaining));
+	background: linear-gradient(180deg, rgb(32 43 56 / 80%) var(--percent-remaining), var(--current-timer-colour) var(--percent-remaining));
 }
 
 #pomodoro-timer {

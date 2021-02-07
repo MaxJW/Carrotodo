@@ -44,8 +44,8 @@
 	}
 
 	function changeProject(project) {
-		if (currProject != project.id) {
-			currProject.update((n) => project.id);
+		if ($currProject != project.id) {
+			$currProject = project.id;
 		}
 	}
 </script>
