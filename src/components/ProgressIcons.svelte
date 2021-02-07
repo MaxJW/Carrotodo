@@ -47,4 +47,12 @@
 	#pomodoro-icons ul :not(:last-child) {
 		padding-bottom: 5px;
 	}
+
+	@media only screen and (max-width: 550px) {
+		.fa-carrot,
+		.fa-check,
+		.fa-hourglass-half {
+			font-size: 1.8em;
+		}
+	}
 </style>

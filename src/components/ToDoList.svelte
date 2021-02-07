@@ -63,10 +63,29 @@
         font-family: sans-serif;
         font-size: 0.9rem;
         width: 420px;
+        margin-bottom: 1.4em;
     }
 
     #todo-container {
         width: 100%;
         z-index: 4;
     }
+
+    @media only screen and (max-width: 650px) {
+        #todo-list {
+            width: 320px;
+        }
+	}
+
+    @media only screen and (max-width: 550px) {
+        #todo-list {
+            width: 230px;
+        }
+	}
+
+    @media only screen and (max-width: 470px) {
+        #todo-list {
+            width: 210px;
+        }
+	}
 </style>

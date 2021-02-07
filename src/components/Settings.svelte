@@ -39,14 +39,17 @@
 </div>
 
 {#if settingsOpen}
-	<div id="settings-panel" class="pos-abs center-full">
+	<div
+		id="settings-panel"
+		class="pos-abs center-full"
+		use:clickOutside
+		on:click_outside={hideSettings}
+	>
 		<h1>Settings</h1>
 		<form
 			id="settings-form"
 			class="center-full"
 			on:submit|preventDefault|nonpassive={hideSettings}
-			use:clickOutside
-			on:click_outside={hideSettings}
 		>
 			{#each $timers as timer (timer.id)}
 				<div class="timer-setting-column center-full">

@@ -139,4 +139,25 @@
         text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
         user-select: none;
     }
+
+    @media only screen and (max-width: 650px) {
+        #pomo-clock {
+            font-size: 8rem;
+            line-height: 9rem;
+        }
+	}
+
+    @media only screen and (max-width: 550px) {
+        #pomo-clock {
+            font-size: 6rem;
+            line-height: 7rem;
+        }
+	}
+
+    @media only screen and (max-width: 470px) {
+        #pomo-clock {
+            font-size: 4rem;
+            line-height: 5rem;
+        }
+	}
 </style>
