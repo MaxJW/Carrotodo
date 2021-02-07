@@ -27,9 +27,33 @@ ul {
 }
 
 .fa-wrench,
-.fa-chart-pie,
 .fa-angle-left {
 	font-size: 1.5em;
+}
+
+.fa-wrench,
+.fa-carrot,
+.fa-check,
+.fa-hourglass-half {
+	border-radius: 50%;
+	padding: var(--body-padding);
+	transition: background-color var(--animation-duration) linear;
+}
+
+.fa-fw {
+	width: 1em !important;
+	height: 1em !important;
+}
+
+.fa-wrench:hover,
+#settings.active .fa-wrench {
+	background-color: #161f27ad;
+}
+
+li.active .fa-carrot,
+li.active .fa-check,
+li.active .fa-hourglass-half {
+	background-color: var(--curr-colour);
 }
 
 .center-full {
@@ -53,16 +77,15 @@ ul {
 }
 
 #settings {
-	top: var(--body-padding);
-	left: var(--body-padding);
+	padding: var(--body-padding);
 	z-index: 3;
 }
 
 #settings-panel {
 	border-radius: 6px;
-	background-color: #161f27ad;
+	background-color: #161f27dd;
 	min-width: 40%;
-	margin: calc(var(--body-padding)*2);
+	margin: calc(var(--body-padding)*3);
 	padding: var(--body-padding);
 	z-index: 5;
 }
@@ -141,7 +164,7 @@ ul {
 }
 
 #pomodoro-icons ul :not(:last-child) {
-	padding-bottom: 25px;
+	padding-bottom: 5px;
 }
 
 #project-panel {
@@ -179,11 +202,19 @@ ul {
 	transition: right 390ms ease-out;
 }
 
+.fa-angle-left {
+	transition: margin-right 100ms ease-out;
+}
+
+#panel-open:hover .fa-angle-left {
+	margin-right: 5px;
+}
+
 #panel-open.open {
 	right: 235px;
 }
 
-#panel-open.open svg {
+#panel-open.open .fa-angle-left {
 	transform: rotate(180deg);
 }
 

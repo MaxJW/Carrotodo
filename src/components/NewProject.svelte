@@ -12,9 +12,11 @@
 
     const addProject = () => {
         if (name && design) {
-            dispatch("add", { pname: name, pdesign: design });
-            name = "";
-            editing = false;
+            if (name.length <= 25) {
+                dispatch("add", { pname: name, pdesign: design });
+                name = "";
+                editing = false;
+            }
         }
     };
 
@@ -53,6 +55,7 @@
                 id="newproj-name"
                 autoComplete="off"
                 placeholder="Create new project"
+                maxlength="25"
             />
             <div class="newproj-lower">
                 <input bind:value={design} type="color" id="newproj-design" />

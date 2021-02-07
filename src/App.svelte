@@ -13,16 +13,16 @@
 	const progress = tweened(0, { duration: 1000 })
 	$: $progress = percentTimeRemaining;
 
-	let currDesign;
+	let currTimer = {};
 </script>
 
 <Settings />
-<ProgressIcons />
+<ProgressIcons {currTimer} />
 
 <ProjectPanel bind:projects={$projects} bind:todos={$todos} />
 <TimeDate />
 
-<div class="container center-full pos-abs" style="--percent-remaining: {$progress}%; --current-timer-colour: {currDesign}cc;">
-	<PomodoroClock bind:percentTimeRemaining={percentTimeRemaining} bind:currDesign={currDesign} />
+<div class="container center-full pos-abs" style="--percent-remaining: {$progress}%; --current-timer-colour: {currTimer.design}cc;">
+	<PomodoroClock bind:percentTimeRemaining bind:currTimer />
 	<ToDoList bind:todos={$todos} />
 </div>

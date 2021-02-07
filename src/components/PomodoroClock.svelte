@@ -4,7 +4,7 @@
     import { padWithZeroes } from "../utils.js";
 
     export let percentTimeRemaining;
-    export let currDesign = "#202b38"; //Cheat to remove initial tweening of loading colour on page launch
+    export let currTimer
 
     let currTask = 1;
     $: taskTime = $timers[0].time * 60;
@@ -24,6 +24,7 @@
     onMount(() => {
         timer = toWait = taskTime;
         currTask = 1;
+        currTimer = $timers[0];
         start = $time.getTime();
     });
 
@@ -46,10 +47,10 @@
     function startTimer() {
         start = $time.getTime();
         started = running = true;
-        currDesign =
+        currTimer =
             currTask == 0
-                ? $timers[2].design
-                : $timers[(currTask - 1) % 2].design;
+                ? $timers[2]
+                : $timers[(currTask - 1) % 2];
     }
 
     function updateTimer() {

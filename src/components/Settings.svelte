@@ -8,12 +8,24 @@
 		settingsOpen = !settingsOpen;
 	};
 
-	function hideSettings() {
+	const hideSettings = () => {
 		settingsOpen = false;
+	}
+
+	const validNum = (e, i) => {
+		if (e.target.value % 1 != 0) {
+			e.target.value = $timers[i].time = Math.floor(e.target.value * 10) / 10;
+		}
+		if (e.target.value < 1) {
+			e.target.value = $timers[i].time = 1;
+		}
+		if (e.target.value > 300) {
+			e.target.value = $timers[i].time = 300;
+		}
 	}
 </script>
 
-<div id="settings" class="pos-fixed tl" on:click={onClick}>
+<div id="settings" class="pos-fixed {settingsOpen ? 'active' : ''}" on:click={onClick}>
 	<i class="fas fa-wrench" />
 </div>
 
@@ -23,7 +35,7 @@
 		<form
 			id="settings-form"
 			class="center-full"
-			on:submit|preventDefault|nonpassive={hideSettings}
+			on:submit|preventDefault={hideSettings}
 			use:clickOutside
 			on:click_outside={hideSettings}
 		>
@@ -38,6 +50,8 @@
 						id="timer-{timer.id}-value"
 						autoComplete="off"
 						placeholder="25"
+						min="1"
+						on:input={(e) => validNum(e, timer.id)}
 					/>
 					<input
 						bind:value={timer.design}
