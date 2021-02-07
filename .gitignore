@@ -22,7 +22,7 @@ node_modules
 _actual*.*
 _output
 /types
-
+/public/build/
 /site/cypress/screenshots/
 /site/__sapper__/
 /site/.env
