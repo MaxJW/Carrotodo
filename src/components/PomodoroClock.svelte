@@ -156,8 +156,8 @@
 
     @media only screen and (max-width: 470px) {
         #pomo-clock {
-            font-size: 4rem;
-            line-height: 5rem;
+            font-size: 5rem;
+            line-height: 6rem;
         }
 	}
 </style>
