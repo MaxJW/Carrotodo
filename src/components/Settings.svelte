@@ -120,4 +120,10 @@
 	#settings.active .fa-wrench {
 		background-color: #161f27ad;
 	}
+
+	@media only screen and (max-width: 750px) {
+		#settings-panel form {
+			flex-direction: column;
+		}
+	}
 </style>
